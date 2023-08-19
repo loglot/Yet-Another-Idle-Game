@@ -15,16 +15,16 @@
       var coin = 0
       var collection = 0
       var menu = 1
+      var growth_c = "yes"
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
       draw_game()
 
       document.addEventListener('keypress', (event) => {
-        var name = event.key;
         var code = event.code;
-        key_man(name)
-        }, false);
+        key_man(code)
+      }, false);
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // library
@@ -144,11 +144,20 @@
 
       function key_man(name) {
         if (menu == 1) {
-          if (name == " ") {
+          if (name == "Space") {
             menu++
             spawn_coin(3000)
             draw_game()
             grow_circ(start)
+          }
+
+          if (name == "KeyT") {
+            if (growth_c == "yes") {
+              growth_c = "no"
+            } else {
+              growth_c = "yes"
+            }
+            draw_game()
           }
         }else{
 //        if (name == "-") (
@@ -157,18 +166,19 @@
 //        if (name == "=" || name == "+") {
 //          grow_circ(20)
 //        }
-          if (name == "w" || name == "ArrowUp") {
-      	    move_circ(0, -20)
+          if (name == "KeyW") {
+            move_circ(0, -20)
           }
-          if (name == "s") {
+          if (name == "KeyS") {
             move_circ(0, 20)
-      	  }
-       	  if (name == "a") {
-       	    move_circ(-20, 0)
           }
-          if (name == "d") {
+          if (name == "KeyA") {
+            move_circ(-20, 0)
+          }
+          if (name == "KeyD") {
             move_circ(20, 0)
-					}
+          }
+
         }
       };
 
@@ -208,6 +218,8 @@
         ctx.font = '80px Sans-serif';
         ctx.strokeStyle = 'black';
         ctx.lineWidth = 8;
+        ctx.lineJoin="miter";
+        ctx.miterLimit=2;
         ctx.strokeText(text, x, y);
         ctx.fillStyle = 'white';
         ctx.fillText(text, x, y);
@@ -215,7 +227,7 @@
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//circle drawing
+//frame drawing
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
       function draw_game() {
@@ -224,21 +236,24 @@
 
         draw_rect()
 
-				
+
         if (menu == 1) {
           drawStroked("yet another collectathon", 250, 200)
           drawStroked("press space to start", 260, 500)
+          drawStroked(`growth on coin: ${growth_c} (press t to flip)`, 260, 600)
         } else{
-        coin_check()
-        draw_circ(r, "#afbfaf", x, y)
-        if (coin == 1) {
-//          console.log (coin)
-          draw_circ(coin_r, "yellow", coin_x, coin_y)
-					}
+          coin_check()
+          draw_circ(r, "#afbfaf", x, y)
+          if (coin == 1) {
+//            console.log (coin)
+            draw_circ(coin_r, "yellow", coin_x, coin_y)
+            
+          }
+          drawStroked(`${collection}`, 50, 100)
         }
       }
 
-			
+
       function draw_circ(radius, color, x, y, shadow) {
         inline = radius - 5
 
