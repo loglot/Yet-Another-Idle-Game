@@ -6,4 +6,4 @@ collecting coins
 
 it's simple, but it works
 
-play online at https://yacg-host.github.io/
+play online [here](https://loglot.github.io/Yet-Another-Collectathon/)https://loglot.github.io/Yet-Another-Collectathon/
