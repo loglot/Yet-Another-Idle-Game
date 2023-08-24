@@ -2,23 +2,23 @@
       const ctx = canvas.getContext("2d");
 
 
-      //import * as draw from "./lib/draw.js"
+      import {player, coin, misc} from './lib/var.js'
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-      var playerR = 5
-      var minPlayerR = 10
-      var maxPlayerR = 450
-      var startingPlayerR = 70
-      var playerX = 838
-      var playerY = 459
-      var coinX = Math.floor(Math.random() * 1636) + 20;
-      var coinY = Math.floor(Math.random() * 878) + 20;
-      var coinR = 0
-      var coinExists = false
-      var coinsCollected = 0
-      var mainMenu = true
-      var growPlayerOnCoin = true
-
+ /*
+      var player.R = 5
+      var player.MinR = 10
+      var player.MaxR = 450
+      var player.StartingR = 70
+      var player.X = 838
+      var player.Y = 459
+      var coin.X = Math.floor(Math.random() * 1636) + 20;
+      var coin.Y = Math.floor(Math.random() * 878) + 20;
+      var coin.R = 0
+      var coin.Exists = false
+      var coin.Collected = 0
+      var misc.MainMenu = true
+      var misc.GrowPlayerOnCoin = true
+ */
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
       drawGame()
@@ -34,9 +34,9 @@
 
       async function shrinkCirc(ammount){
         for(let i = 0; i < ammount; i++) {
-          playerR--;
-          if (playerR < minPlayerR) {
-            playerR = minPlayerR
+          player.R--;
+          if (player.R < player.minR) {
+            player.R = player.minR
           };
           draw.drawGame();
           await sleep (10);
@@ -46,28 +46,28 @@
       async function growCirc(ammount){
         for(let i = 0; i < ammount; i++) {
 
-            playerR++;
+            player.R++;
             drawGame();
             await sleep(10);
 
-            if (playerR > maxPlayerR) {
-              playerR = maxPlayerR
+            if (player.R > player.MaxR) {
+              player.R = player.MaxR
             }
 
-            if (playerX < playerR + 5) {
-              playerX = playerR + 5
+            if (player.X < player.R + 5) {
+              player.X = player.R + 5
             }
 
-            if (playerX > -playerR + 1670) {
-              playerX = -playerR + 1670
+            if (player.X > -player.R + 1670) {
+              player.X = -player.R + 1670
             }
 
-            if (playerY < playerR + 8) {
-              playerY = playerR + 8
+            if (player.Y < player.R + 8) {
+              player.Y = player.R + 8
             }
 
-            if (playerY > -playerR + 910) {
-              playerY = -playerR + 910
+            if (player.Y > -player.R + 910) {
+              player.Y = -player.R + 910
             }
 
         };
@@ -91,20 +91,20 @@
 
         for (let i = 0; i < abs_xc; i++) {
           if (xc < 0) {
-            playerX--;
+            player.X--;
 
-            if (playerX < playerR + 25) {
-              playerX = playerR + 25
+            if (player.X < player.R + 25) {
+              player.X = player.R + 25
             }
 
             drawGame();
             await sleep(10);
 
           } else {
-            playerX++;
+            player.X++;
 
-            if (playerX > -playerR + 1650) {
-              playerX = -playerR + 1650
+            if (player.X > -player.R + 1650) {
+              player.X = -player.R + 1650
             }
 
             drawGame();
@@ -115,19 +115,19 @@
 
           for (let i = 0; i < abs_yc; i++) {
             if (yc < 0) {
-              playerY--;
+              player.Y--;
 
-              if (playerY < playerR + 28) {
-                playerY = playerR + 28
+              if (player.Y < player.R + 28) {
+                player.Y = player.R + 28
               }
 
               drawGame();
               await sleep(10);
             } else {
-              playerY++;
+              player.Y++;
 
-              if (playerY > -playerR + 890) {
-                playerY = -playerR + 890
+              if (player.Y > -player.R + 890) {
+                player.Y = -player.R + 890
               }
 
               drawGame();
@@ -136,7 +136,7 @@
 
           };
 
-//          console.log (playerX, y)
+//          console.log (player.X, y)
 
       }
 
@@ -145,16 +145,16 @@
       };
 
       function keyManager(name) {
-        if (mainMenu) {
+        if (misc.MainMenu) {
           if (name == "Space") {
-            mainMenu = false
+            misc.MainMenu = false
             spawnCoin(3000)
             drawGame()
-            growCirc(startingPlayerR)
+            growCirc(player.StartingR)
           }
 
           if (name == "KeyT") {
-              growPlayerOnCoin = !growPlayerOnCoin;
+              misc.GrowPlayerOnCoin = !misc.GrowPlayerOnCoin;
             drawGame()
           }
         }else{
@@ -181,19 +181,19 @@
       };
 
       async function spawnCoin(delay) {
-        coinExists = false
+        coin.Exists = false
         await sleep(delay)
-        coinX = Math.floor(Math.random() * 1636) + 20;
-        coinY = Math.floor(Math.random() * 878) + 20;
-        coinR = 5
-        coinExists = true
+        coin.X = Math.floor(Math.random() * 1636) + 20;
+        coin.Y = Math.floor(Math.random() * 878) + 20;
+        coin.R = 5
+        coin.Exists = true
         growCoin(10)
 
       }
 
       async function growCoin(ammount) {
         for(let i = 0; i < ammount; i++) {
-          coinR++;
+          coin.R++;
           drawGame();
           await sleep(10);
         }
@@ -201,13 +201,13 @@
 
       function coinCheck() {
 
-        if (coinX < playerX + playerR && coinX > playerX - playerR && coinY < playerY + playerR && coinY > playerY - playerR && coinExists) {
-          coinExists = false
-          coinsCollected++
+        if (coin.X < player.X + player.R && coin.X > player.X - player.R && coin.Y < player.Y + player.R && coin.Y > player.Y - player.R && coin.Exists) {
+          coin.Exists = false
+          coin.Collected++
           drawGame()
           growCirc(10)
           spawnCoin(1500)
-          console.log(coinsCollected)
+          console.log(coin.Collected)
         }
         
       }
@@ -236,19 +236,19 @@
         draw_rect()
 
 
-        if (mainMenu) {
+        if (misc.MainMenu) {
           drawStroked("yet another collectathon", 250, 200)
           drawStroked("press space to start", 260, 500)
-          drawStroked(`growth on coin: ${growPlayerOnCoin ? "yes" : "no"} (press t to flip)`, 260, 600)
+          drawStroked(`growth on coin: ${misc.GrowPlayerOnCoin ? "yes" : "no"} (press t to flip)`, 260, 600)
         } else{
           coinCheck()
-          draw_circ(playerR, "#afbfaf", playerX, playerY)
-          if (coinExists) {
+          draw_circ(player.R, "#afbfaf", player.X, player.Y)
+          if (coin.Exists) {
 //            console.log (coin)
-            draw_circ(coinR, "yellow", coinX, coinY)
+            draw_circ(coin.R, "yellow", coin.X, coin.Y)
             
           }
-          drawStroked(`${coinsCollected}`, 50, 100)
+          drawStroked(`${coin.Collected}`, 50, 100)
         }
       }
 
