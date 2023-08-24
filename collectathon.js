@@ -15,7 +15,7 @@
       var coinExists = false
       var coinsCollected = 0
       var mainMenu = true
-      var growth_c = "yes"
+      var growPlayerOnCoin = true
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -152,11 +152,7 @@
           }
 
           if (name == "KeyT") {
-            if (growth_c == "yes") {
-              growth_c = "no"
-            } else {
-              growth_c = "yes"
-            }
+              growPlayerOnCoin = !growPlayerOnCoin;
             drawGame()
           }
         }else{
@@ -240,7 +236,7 @@
         if (mainMenu) {
           drawStroked("yet another collectathon", 250, 200)
           drawStroked("press space to start", 260, 500)
-          drawStroked(`growth on coin: ${growth_c} (press t to flip)`, 260, 600)
+          drawStroked(`growth on coin: ${growPlayerOnCoin ? "yes" : "no"} (press t to flip)`, 260, 600)
         } else{
           coinCheck()
           draw_circ(playerR, "#afbfaf", playerX, playerY)
