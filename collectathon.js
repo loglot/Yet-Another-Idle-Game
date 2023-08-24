@@ -1,8 +1,8 @@
       const canvas = document.getElementById("game_screen");
       const ctx = canvas.getContext("2d");
 
-
-      import {player, coin, misc} from './lib/var.js'
+      const { player, coin, misc } = require('./lib/var.js')
+    //  import {player, coin, misc} from './lib/var.js'
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  /*
       var player.R = 5
