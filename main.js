@@ -1,10 +1,10 @@
       const canvas = document.getElementById("game_screen");
       const ctx = canvas.getContext("2d");
 
-      const { player, coin, misc } = require('./lib/var.js')
+    //  const { player, coin, misc } = require('./lib/var.js')
     //  import {player, coin, misc} from './lib/var.js'
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- /*
+ /* variable setter legacy {
       var player.R = 5
       var player.MinR = 10
       var player.MaxR = 450
@@ -18,6 +18,7 @@
       var coin.Collected = 0
       var misc.MainMenu = true
       var misc.GrowPlayerOnCoin = true
+ }
  */
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
