@@ -1,6 +1,8 @@
       const canvas = document.getElementById("game_screen");
       const ctx = canvas.getContext("2d");
 
+
+      import * as draw from "./lib/draw.js"
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
       var playerR = 5
@@ -36,7 +38,7 @@
           if (playerR < minPlayerR) {
             playerR = minPlayerR
           };
-          drawGame();
+          draw.drawGame();
           await sleep (10);
         }
       };
@@ -226,6 +228,7 @@
 //frame drawing
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+/*
       function drawGame() {
 
         //clear screen
@@ -248,7 +251,7 @@
           drawStroked(`${coinsCollected}`, 50, 100)
         }
       }
-
+*/
 
       function draw_circ(radius, color, x, y, shadow) {
         inline = radius - 5
