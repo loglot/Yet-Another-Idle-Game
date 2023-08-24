@@ -3,69 +3,69 @@
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-      var r = 5
-      var min = 10
-      var max = 4502
-      var start = 70
-      var x = 838
-      var y = 459
-      var coin_x = Math.floor(Math.random() * 1636) + 20;
-      var coin_y = Math.floor(Math.random() * 878) + 20;
-      var coin_r = 0
-      var coin = 0
-      var collection = 0
-      var menu = 1
-      var growth_c = "yes"
+      var playerR = 5
+      var minPlayerR = 10
+      var maxPlayerR = 450
+      var startingPlayerR = 70
+      var playerX = 838
+      var playerY = 459
+      var coinX = Math.floor(Math.random() * 1636) + 20;
+      var coinY = Math.floor(Math.random() * 878) + 20;
+      var coinR = 0
+      var coinExists = false
+      var coinsCollected = 0
+      var mainMenu = true
+      var growPlayerOnCoin = true
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-      draw_game()
+      drawGame()
 
       document.addEventListener('keypress', (event) => {
         var code = event.code;
-        key_man(code)
+        keyManager(code)
       }, false);
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // library
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-      async function shrink_circ(ammount){
+      async function shrinkCirc(ammount){
         for(let i = 0; i < ammount; i++) {
-          r--;
-          if (r < min) {
-            r = min
+          playerR--;
+          if (playerR < minPlayerR) {
+            playerR = minPlayerR
           };
-          draw_game();
+          drawGame();
           await sleep (10);
         }
       };
 
-      async function grow_circ(ammount){
+      async function growCirc(ammount){
         for(let i = 0; i < ammount; i++) {
 
-            r++;
-            draw_game();
+            playerR++;
+            drawGame();
             await sleep(10);
 
-            if (r > max) {
-              r = max
+            if (playerR > maxPlayerR) {
+              playerR = maxPlayerR
             }
 
-            if (x < r + 5) {
-              x = r + 5
+            if (playerX < playerR + 5) {
+              playerX = playerR + 5
             }
 
-            if (x > -r + 1670) {
-              x = -r + 1670
+            if (playerX > -playerR + 1670) {
+              playerX = -playerR + 1670
             }
 
-            if (y < r + 8) {
-              y = r + 8
+            if (playerY < playerR + 8) {
+              playerY = playerR + 8
             }
 
-            if (y > -r + 910) {
-              y = -r + 910
+            if (playerY > -playerR + 910) {
+              playerY = -playerR + 910
             }
 
         };
@@ -74,7 +74,7 @@
 
       };
 
-      async function move_circ(xc, yc) {
+      async function moveCirc(xc, yc) {
         if (xc < 0) {
           var abs_xc = 0 - xc
         } else {
@@ -89,23 +89,23 @@
 
         for (let i = 0; i < abs_xc; i++) {
           if (xc < 0) {
-            x--;
+            playerX--;
 
-            if (x < r + 25) {
-              x = r + 25
+            if (playerX < playerR + 25) {
+              playerX = playerR + 25
             }
 
-            draw_game();
+            drawGame();
             await sleep(10);
 
           } else {
-            x++;
+            playerX++;
 
-            if (x > -r + 1650) {
-              x = -r + 1650
+            if (playerX > -playerR + 1650) {
+              playerX = -playerR + 1650
             }
 
-            draw_game();
+            drawGame();
             await sleep(10);
           };
 
@@ -113,28 +113,28 @@
 
           for (let i = 0; i < abs_yc; i++) {
             if (yc < 0) {
-              y--;
+              playerY--;
 
-              if (y < r + 28) {
-                y = r + 28
+              if (playerY < playerR + 28) {
+                playerY = playerR + 28
               }
 
-              draw_game();
+              drawGame();
               await sleep(10);
             } else {
-              y++;
+              playerY++;
 
-              if (y > -r + 890) {
-                y = -r + 890
+              if (playerY > -playerR + 890) {
+                playerY = -playerR + 890
               }
 
-              draw_game();
+              drawGame();
               await sleep(10);
             };
 
           };
 
-//          console.log (x, y)
+//          console.log (playerX, y)
 
       }
 
@@ -142,74 +142,70 @@
         return new Promise(resolve => setTimeout(resolve, ms));
       };
 
-      function key_man(name) {
-        if (menu == 1) {
+      function keyManager(name) {
+        if (mainMenu) {
           if (name == "Space") {
-            menu++
-            spawn_coin(3000)
-            draw_game()
-            grow_circ(start)
+            mainMenu = false
+            spawnCoin(3000)
+            drawGame()
+            growCirc(startingPlayerR)
           }
 
           if (name == "KeyT") {
-            if (growth_c == "yes") {
-              growth_c = "no"
-            } else {
-              growth_c = "yes"
-            }
-            draw_game()
+              growPlayerOnCoin = !growPlayerOnCoin;
+            drawGame()
           }
         }else{
 //        if (name == "-") (
-//          shrink_circ(20)
+//          shrinkCirc(20)
 //        )
 //        if (name == "=" || name == "+") {
-//          grow_circ(20)
+//          growCirc(20)
 //        }
           if (name == "KeyW") {
-            move_circ(0, -20)
+            moveCirc(0, -20)
           }
           if (name == "KeyS") {
-            move_circ(0, 20)
+            moveCirc(0, 20)
           }
           if (name == "KeyA") {
-            move_circ(-20, 0)
+            moveCirc(-20, 0)
           }
           if (name == "KeyD") {
-            move_circ(20, 0)
+            moveCirc(20, 0)
           }
 
         }
       };
 
-      async function spawn_coin(delay) {
-        coin = 0
+      async function spawnCoin(delay) {
+        coinExists = false
         await sleep(delay)
-        coin_x = Math.floor(Math.random() * 1636) + 20;
-        coin_y = Math.floor(Math.random() * 878) + 20;
-        coin_r = 5
-        coin = 1
-        grow_coin(10)
+        coinX = Math.floor(Math.random() * 1636) + 20;
+        coinY = Math.floor(Math.random() * 878) + 20;
+        coinR = 5
+        coinExists = true
+        growCoin(10)
 
       }
 
-      async function grow_coin(ammount) {
+      async function growCoin(ammount) {
         for(let i = 0; i < ammount; i++) {
-          coin_r++;
-          draw_game();
+          coinR++;
+          drawGame();
           await sleep(10);
         }
       }
 
-      function coin_check() {
+      function coinCheck() {
 
-        if (coin_x < x + r && coin_x > x - r && coin_y < y + r && coin_y > y - r && coin == 1) {
-          coin = 0
-          collection++
-          draw_game()
-          grow_circ(10)
-          spawn_coin(1500)
-          console.log(collection)
+        if (coinX < playerX + playerR && coinX > playerX - playerR && coinY < playerY + playerR && coinY > playerY - playerR && coinExists) {
+          coinExists = false
+          coinsCollected++
+          drawGame()
+          growCirc(10)
+          spawnCoin(1500)
+          console.log(coinsCollected)
         }
         
       }
@@ -230,26 +226,26 @@
 //frame drawing
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-      function draw_game() {
+      function drawGame() {
 
         //clear screen
 
         draw_rect()
 
 
-        if (menu == 1) {
+        if (mainMenu) {
           drawStroked("yet another collectathon", 250, 200)
           drawStroked("press space to start", 260, 500)
-          drawStroked(`growth on coin: ${growth_c} (press t to flip)`, 260, 600)
+          drawStroked(`growth on coin: ${growPlayerOnCoin ? "yes" : "no"} (press t to flip)`, 260, 600)
         } else{
-          coin_check()
-          draw_circ(r, "#afbfaf", x, y)
-          if (coin == 1) {
+          coinCheck()
+          draw_circ(playerR, "#afbfaf", playerX, playerY)
+          if (coinExists) {
 //            console.log (coin)
-            draw_circ(coin_r, "yellow", coin_x, coin_y)
+            draw_circ(coinR, "yellow", coinX, coinY)
             
           }
-          drawStroked(`${collection}`, 50, 100)
+          drawStroked(`${coinsCollected}`, 50, 100)
         }
       }
 
