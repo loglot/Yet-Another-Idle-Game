@@ -1,16 +1,18 @@
-      const canvas = document.getElementById("game_screen");
+    const canvas = document.getElementById("game_screen");
       const ctx = canvas.getContext("2d");
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-       playerVar.StartingR = 70
- 
+      export var mainMenu = true;
+
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       draw.Game()
 
+
+    // Worry about later
       document.addEventListener('keypress', (event) => {
         var code = event.code;
-        keyManager(code)
+        misc.keyManager(code)
       }, false);
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -166,48 +168,4 @@
         }
       };
 */
-      async function spawnCoin(delay) {
-        coinVar.Exists = false
-        await sleep(delay)
-        coinVar.X = Math.floor(Math.random() * 1636) + 20;
-        coinVar.Y = Math.floor(Math.random() * 878) + 20;
-        coinVar.R = 5
-        coinVar.Exists = true
-        growCoin(10)
-
-      }
-
-      async function growCoin(ammount) {
-        for(let i = 0; i < ammount; i++) {
-          coinVar.R++;
-          draw.Game();
-          await sleep(10);
-        }
-      }
-
-      function coinCheck() {
-
-        if (coinVar.X < playerVar.X + playerVar.R && coinVar.X > playerVar.X - playerVar.R && coinVar.Y < playerVar.Y + playerVar.R && coinVar.Y > playerVar.Y - playerVar.R && coinVar.Exists) {
-          coinVar.Exists = false
-          coinVar.Collected++
-          draw.Game()
-          if(miscVar.GrowPlayerOnCoin){
-            growCirc(10)
-          }
-          spawnCoin(1500)
-          console.log(coinVar.Collected)
-        }
-        
-      }
-
-      function drawStroked(text, x, y) {
-        ctx.font = '80px Sans-serif';
-        ctx.strokeStyle = 'black';
-        ctx.lineWidth = 8;
-        ctx.lineJoin="miter";
-        ctx.miterLimit=2;
-        ctx.strokeText(text, x, y);
-        ctx.fillStyle = 'white';
-        ctx.fillText(text, x, y);
-      }
 
