@@ -6,4 +6,4 @@ collecting coins
 
 it's simple, but it works
 
-play online [here](https://loglot.github.io/Yet-Another-Collectathon/)https://loglot.github.io/Yet-Another-Collectathon/
+play online [here](https://loglot.github.io/Yet-Another-Collectathon/)

@@ -1,14 +1,11 @@
       const canvas = document.getElementById("game_screen");
       const ctx = canvas.getContext("2d");
 
-    //  const { player, coin, misc } = require('./lib/var.js')
-    //  import {player, coin, misc} from './lib/var.js'
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-       player.StartingR = 70
+       playerVar.StartingR = 70
  
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-      console.log(player.StartingR)
       draw.Game()
 
       document.addEventListener('keypress', (event) => {
@@ -19,12 +16,12 @@
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // library
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+/*
       async function shrinkCirc(ammount){
         for(let i = 0; i < ammount; i++) {
-          player.R--;
-          if (player.R < player.MinR) {
-            player.R = player.MinR
+          playerVar.R--;
+          if (playerVar.R < playerVar.MinR) {
+            playerVar.R = playerVar.MinR
           };
           draw.draw.Game();
           await sleep (10);
@@ -34,35 +31,34 @@
       async function growCirc(ammount){
         for(let i = 0; i < ammount; i++) {
 
-            player.R++;
+            playerVar.R++;
             draw.Game();
             await sleep(10);
 
-            if (player.R > player.MaxR) {
-              player.R = player.MaxR
+            if (playerVar.R > playerVar.MaxR) {
+              playerVar.R = playerVar.MaxR
             }
 
-            if (player.X < player.R + 5) {
-              player.X = player.R + 5
+            if (playerVar.X < playerVar.R + 5) {
+              playerVar.X = playerVar.R + 5
             }
 
-            if (player.X > -player.R + 1670) {
-              player.X = -player.R + 1670
+            if (playerVar.X > -playerVar.R + 1670) {
+              playerVar.X = -playerVar.R + 1670
             }
 
-            if (player.Y < player.R + 8) {
-              player.Y = player.R + 8
+            if (playerVar.Y < playerVar.R + 8) {
+              playerVar.Y = playerVar.R + 8
             }
 
-            if (player.Y > -player.R + 910) {
-              player.Y = -player.R + 910
+            if (playerVar.Y > -playerVar.R + 910) {
+              playerVar.Y = -playerVar.R + 910
             }
 
         };
 
-//        console.log (r)
-
       };
+
 
       async function moveCirc(xc, yc) {
         if (xc < 0) {
@@ -79,20 +75,20 @@
 
         for (let i = 0; i < abs_xc; i++) {
           if (xc < 0) {
-            player.X--;
+            playerVar.X--;
 
-            if (player.X < player.R + 25) {
-              player.X = player.R + 25
+            if (playerVar.X < playerVar.R + 25) {
+              playerVar.X = playerVar.R + 25
             }
 
             draw.Game();
             await sleep(10);
 
           } else {
-            player.X++;
+            playerVar.X++;
 
-            if (player.X > -player.R + 1650) {
-              player.X = -player.R + 1650
+            if (playerVar.X > -playerVar.R + 1650) {
+              playerVar.X = -playerVar.R + 1650
             }
 
             draw.Game();
@@ -103,19 +99,19 @@
 
           for (let i = 0; i < abs_yc; i++) {
             if (yc < 0) {
-              player.Y--;
+              playerVar.Y--;
 
-              if (player.Y < player.R + 28) {
-                player.Y = player.R + 28
+              if (playerVar.Y < playerVar.R + 28) {
+                playerVar.Y = playerVar.R + 28
               }
 
               draw.Game();
               await sleep(10);
             } else {
-              player.Y++;
+              playerVar.Y++;
 
-              if (player.Y > -player.R + 890) {
-                player.Y = -player.R + 890
+              if (playerVar.Y > -playerVar.R + 890) {
+                playerVar.Y = -playerVar.R + 890
               }
 
               draw.Game();
@@ -124,25 +120,27 @@
 
           };
 
-//          console.log (player.X, y)
+//          console.log (playerVar.X, y)
 
       }
+
+
 
       function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
       };
 
       function keyManager(name) {
-        if (misc.MainMenu) {
+        if (miscVar.MainMenu) {
           if (name == "Space") {
-            misc.MainMenu = false
+            miscVar.MainMenu = false
             spawnCoin(3000)
             draw.Game()
-            growCirc(player.StartingR)
+            growCirc(playerVar.StartingR)
           }
 
           if (name == "KeyT") {
-              misc.GrowPlayerOnCoin = !misc.GrowPlayerOnCoin;
+              miscVar.GrowPlayerOnCoin = !miscVar.GrowPlayerOnCoin;
             draw.Game()
           }
         }else{
@@ -167,21 +165,21 @@
 
         }
       };
-
+*/
       async function spawnCoin(delay) {
-        coin.Exists = false
+        coinVar.Exists = false
         await sleep(delay)
-        coin.X = Math.floor(Math.random() * 1636) + 20;
-        coin.Y = Math.floor(Math.random() * 878) + 20;
-        coin.R = 5
-        coin.Exists = true
+        coinVar.X = Math.floor(Math.random() * 1636) + 20;
+        coinVar.Y = Math.floor(Math.random() * 878) + 20;
+        coinVar.R = 5
+        coinVar.Exists = true
         growCoin(10)
 
       }
 
       async function growCoin(ammount) {
         for(let i = 0; i < ammount; i++) {
-          coin.R++;
+          coinVar.R++;
           draw.Game();
           await sleep(10);
         }
@@ -189,15 +187,15 @@
 
       function coinCheck() {
 
-        if (coin.X < player.X + player.R && coin.X > player.X - player.R && coin.Y < player.Y + player.R && coin.Y > player.Y - player.R && coin.Exists) {
-          coin.Exists = false
-          coin.Collected++
+        if (coinVar.X < playerVar.X + playerVar.R && coinVar.X > playerVar.X - playerVar.R && coinVar.Y < playerVar.Y + playerVar.R && coinVar.Y > playerVar.Y - playerVar.R && coinVar.Exists) {
+          coinVar.Exists = false
+          coinVar.Collected++
           draw.Game()
-          if(misc.GrowPlayerOnCoin){
+          if(miscVar.GrowPlayerOnCoin){
             growCirc(10)
           }
           spawnCoin(1500)
-          console.log(coin.Collected)
+          console.log(coinVar.Collected)
         }
         
       }
@@ -213,98 +211,3 @@
         ctx.fillText(text, x, y);
       }
 
-
-//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//frame drawing
-//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-/*
-
-      function drawGame() {
-
-        //clear screen
-
-        draw.Rect()
-
-
-        if (misc.MainMenu) {
-          drawStroked("yet another collectathon", 250, 200)
-          drawStroked("press space to start", 260, 500)
-          drawStroked(`growth on coin: ${misc.GrowPlayerOnCoin ? "yes" : "no"} (press t to flip)`, 260, 600)
-        } else{
-          coinCheck()
-          draw.Circ(player.R, "#afbfaf", player.X, player.Y)
-          if (coin.Exists) {
-//            console.log (coin)
-            draw.Circ(coin.R, "yellow", coin.X, coin.Y)
-            
-          }
-          drawStroked(`${coin.Collected}`, 50, 100)
-        }
-      }
-
-
-      function draw.Circ(radius, color, x, y, shadow) {
-        inline = radius - 5
-
-        //outline
-
-        ctx.beginPath();
-        ctx.arc(x, y, radius, 0, Math.PI * 2, false);
-        ctx.fillStyle = "black";
-        ctx.fill();
-        ctx.closePath();
-
-        //shadow
-
-        if (shadow == "no"){
-
-        } else {
-        ctx.beginPath();
-        ctx.arc(x - 5, y + 5, radius, 0, Math.PI * 2, false);
-        ctx.fillStyle = "rgba(0, 0, 0, .1)";
-        ctx.fill();
-        ctx.closePath();
-        }
-
-        //main color
-
-        ctx.beginPath();
-        ctx.arc(x, y, inline, 0, Math.PI * 2, false);
-        ctx.fillStyle = color;
-        ctx.fill();
-        ctx.closePath();
-
-      };
-
-      function draw.Rect() {
-
-        if (true) {
-
-          ctx.beginPath();
-          ctx.rect(0, 20, 1676, 878);
-          ctx.fillStyle = "#000000";
-          ctx.fill();
-          ctx.closePath();
-
-          ctx.beginPath();
-          ctx.rect(20, 0, 1636, 918);
-          ctx.fillStyle = "#000000";
-          ctx.fill();
-          ctx.closePath();
-
-          draw.Circ(20, "black", 20, 20, "no")
-          draw.Circ(20, "black", 1656, 20, "no")
-          draw.Circ(20, "black", 20, 898, "no")
-          draw.Circ(20, "black", 1656, 898, "no")
-
-        }
-
-
-        ctx.beginPath();
-        ctx.rect(20, 20, 1636, 878);
-        ctx.fillStyle = "#90b0c0";
-        ctx.fill();
-        ctx.closePath();
-
-      }
-*/
