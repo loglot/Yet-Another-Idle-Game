@@ -193,7 +193,9 @@
           coin.Exists = false
           coin.Collected++
           drawGame()
-          growCirc(10)
+          if(misc.GrowPlayerOnCoin){
+            growCirc(10)
+          }
           spawnCoin(1500)
           console.log(coin.Collected)
         }
