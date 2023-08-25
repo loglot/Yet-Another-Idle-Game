@@ -9,7 +9,7 @@
  
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       console.log(player.StartingR)
-      drawGame()
+      draw.Game()
 
       document.addEventListener('keypress', (event) => {
         var code = event.code;
@@ -26,7 +26,7 @@
           if (player.R < player.MinR) {
             player.R = player.MinR
           };
-          draw.drawGame();
+          draw.draw.Game();
           await sleep (10);
         }
       };
@@ -35,7 +35,7 @@
         for(let i = 0; i < ammount; i++) {
 
             player.R++;
-            drawGame();
+            draw.Game();
             await sleep(10);
 
             if (player.R > player.MaxR) {
@@ -85,7 +85,7 @@
               player.X = player.R + 25
             }
 
-            drawGame();
+            draw.Game();
             await sleep(10);
 
           } else {
@@ -95,7 +95,7 @@
               player.X = -player.R + 1650
             }
 
-            drawGame();
+            draw.Game();
             await sleep(10);
           };
 
@@ -109,7 +109,7 @@
                 player.Y = player.R + 28
               }
 
-              drawGame();
+              draw.Game();
               await sleep(10);
             } else {
               player.Y++;
@@ -118,7 +118,7 @@
                 player.Y = -player.R + 890
               }
 
-              drawGame();
+              draw.Game();
               await sleep(10);
             };
 
@@ -137,13 +137,13 @@
           if (name == "Space") {
             misc.MainMenu = false
             spawnCoin(3000)
-            drawGame()
+            draw.Game()
             growCirc(player.StartingR)
           }
 
           if (name == "KeyT") {
               misc.GrowPlayerOnCoin = !misc.GrowPlayerOnCoin;
-            drawGame()
+            draw.Game()
           }
         }else{
 //        if (name == "-") (
@@ -182,7 +182,7 @@
       async function growCoin(ammount) {
         for(let i = 0; i < ammount; i++) {
           coin.R++;
-          drawGame();
+          draw.Game();
           await sleep(10);
         }
       }
@@ -192,7 +192,7 @@
         if (coin.X < player.X + player.R && coin.X > player.X - player.R && coin.Y < player.Y + player.R && coin.Y > player.Y - player.R && coin.Exists) {
           coin.Exists = false
           coin.Collected++
-          drawGame()
+          draw.Game()
           if(misc.GrowPlayerOnCoin){
             growCirc(10)
           }
@@ -217,13 +217,13 @@
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //frame drawing
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+/*
 
       function drawGame() {
 
         //clear screen
 
-        draw_rect()
+        draw.Rect()
 
 
         if (misc.MainMenu) {
@@ -232,10 +232,10 @@
           drawStroked(`growth on coin: ${misc.GrowPlayerOnCoin ? "yes" : "no"} (press t to flip)`, 260, 600)
         } else{
           coinCheck()
-          draw_circ(player.R, "#afbfaf", player.X, player.Y)
+          draw.Circ(player.R, "#afbfaf", player.X, player.Y)
           if (coin.Exists) {
 //            console.log (coin)
-            draw_circ(coin.R, "yellow", coin.X, coin.Y)
+            draw.Circ(coin.R, "yellow", coin.X, coin.Y)
             
           }
           drawStroked(`${coin.Collected}`, 50, 100)
@@ -243,7 +243,7 @@
       }
 
 
-      function draw_circ(radius, color, x, y, shadow) {
+      function draw.Circ(radius, color, x, y, shadow) {
         inline = radius - 5
 
         //outline
@@ -276,7 +276,7 @@
 
       };
 
-      function draw_rect() {
+      function draw.Rect() {
 
         if (true) {
 
@@ -292,10 +292,10 @@
           ctx.fill();
           ctx.closePath();
 
-          draw_circ(20, "black", 20, 20, "no")
-          draw_circ(20, "black", 1656, 20, "no")
-          draw_circ(20, "black", 20, 898, "no")
-          draw_circ(20, "black", 1656, 898, "no")
+          draw.Circ(20, "black", 20, 20, "no")
+          draw.Circ(20, "black", 1656, 20, "no")
+          draw.Circ(20, "black", 20, 898, "no")
+          draw.Circ(20, "black", 1656, 898, "no")
 
         }
 
@@ -307,3 +307,4 @@
         ctx.closePath();
 
       }
+*/
