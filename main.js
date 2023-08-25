@@ -4,24 +4,12 @@
     //  const { player, coin, misc } = require('./lib/var.js')
     //  import {player, coin, misc} from './lib/var.js'
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- /* variable setter legacy {
-      var player.R = 5
-      var player.MinR = 10
-      var player.MaxR = 450
-      var player.StartingR = 70
-      var player.X = 838
-      var player.Y = 459
-      var coin.X = Math.floor(Math.random() * 1636) + 20;
-      var coin.Y = Math.floor(Math.random() * 878) + 20;
-      var coin.R = 0
-      var coin.Exists = false
-      var coin.Collected = 0
-      var misc.MainMenu = true
-      var misc.GrowPlayerOnCoin = true
- }
- */
-//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+       player.StartingR = 70
+ 
+ 
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      console.log(player.StartingR)
       drawGame()
 
       document.addEventListener('keypress', (event) => {
