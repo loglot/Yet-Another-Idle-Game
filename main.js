@@ -7,7 +7,6 @@
 
        player.StartingR = 70
  
- 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       console.log(player.StartingR)
       drawGame()
@@ -24,8 +23,8 @@
       async function shrinkCirc(ammount){
         for(let i = 0; i < ammount; i++) {
           player.R--;
-          if (player.R < player.minR) {
-            player.R = player.minR
+          if (player.R < player.MinR) {
+            player.R = player.MinR
           };
           draw.drawGame();
           await sleep (10);
