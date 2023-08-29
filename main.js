@@ -1,3 +1,5 @@
+'use strict';
+
     const canvas = document.getElementById("game_screen");
       const ctx = canvas.getContext("2d");
 
@@ -24,6 +26,8 @@
 
     async function gameLoop() {
         while(true) {
+            keyManager.doActionsFromKeyInput();
+            keyManager.onTick();
             draw.Game()
             await misc.sleep(1000/60)
         }
