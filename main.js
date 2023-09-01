@@ -48,7 +48,7 @@ var scaleY = 0;
   
       // Calculate the desired width and height based on the window's dimensions
       if (currentHeight > windowHeight) {
-        const desiredHeight = windowheight;
+        const desiredHeight = windowHeight;
         const aspectRatio = originalWidth / originalHeight;
         const desiredWidth = desiredHeight / aspectRatio;
       }else {
