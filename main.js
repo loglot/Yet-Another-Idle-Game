@@ -57,13 +57,13 @@ var scaleY = 0;
       scaleY = (desiredHeight / originalHeight);
       ctx.setTransform(scaleY, 0, 0, scaleX, 0, 0)
 
-      const currentWidth = canvas.width;
-      const currentHeight = canvas.height;
+       currentWidth = canvas.width;
+       currentHeight = canvas.height;
 
       if (currentHeight >= windowHeight) {
-        const desiredHeight = windowHeight;
-        const aspectRatio = originalWidth / originalHeight;
-        const desiredWidth = desiredHeight / aspectRatio;
+         desiredHeight = windowHeight;
+         aspectRatio = originalWidth / originalHeight;
+         desiredWidth = desiredHeight / aspectRatio;
         canvas.width = desiredWidth;
         canvas.height = desiredHeight;
         scaleX = (desiredWidth / originalWidth);
