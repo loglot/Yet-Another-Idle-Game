@@ -51,16 +51,19 @@ var scaleY = 0;
         const desiredHeight = windowHeight;
         const aspectRatio = originalWidth / originalHeight;
         const desiredWidth = desiredHeight / aspectRatio;
+        canvas.width = desiredWidth;
+        canvas.height = desiredHeight;
       }else {
         const desiredWidth = windowWidth;
         const aspectRatio = originalWidth / originalHeight;
         const desiredHeight = desiredWidth / aspectRatio;
+        canvas.width = desiredWidth;
+        canvas.height = desiredHeight;
       }
 
   
       // Set the canvas element's width and height
-      canvas.width = desiredWidth;
-      canvas.height = desiredHeight;
+
   
       // Resize the canvas drawing area to maintain the aspect ratio
       scaleX = (desiredWidth / originalWidth);
