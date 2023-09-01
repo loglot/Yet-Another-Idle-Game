@@ -47,15 +47,16 @@ var scaleY = 0;
       const windowHeight = window.innerHeight;
   
       // Calculate the desired width and height based on the window's dimensions
-      if (currentHeight < windowHeight) {
-        const desiredWidth = windowWidth;
-        const aspectRatio = originalWidth / originalHeight;
-        const desiredHeight = desiredWidth / aspectRatio;
-      } else {
+      if (currentHeight > windowHeight) {
         const desiredHeight = windowheight;
         const aspectRatio = originalWidth / originalHeight;
         const desiredWidth = desiredHeight / aspectRatio;
+      }else {
+        const desiredWidth = windowWidth;
+        const aspectRatio = originalWidth / originalHeight;
+        const desiredHeight = desiredWidth / aspectRatio;
       }
+
   
       // Set the canvas element's width and height
       canvas.width = desiredWidth;
