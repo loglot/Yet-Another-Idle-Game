@@ -53,12 +53,18 @@ var scaleY = 0;
         const desiredWidth = desiredHeight / aspectRatio;
         canvas.width = desiredWidth;
         canvas.height = desiredHeight;
+        scaleX = (desiredWidth / originalWidth);
+        scaleY = (desiredHeight / originalHeight);
+        ctx.setTransform(scaleY, 0, 0, scaleX, 0, 0)
       }else {
         const desiredWidth = windowWidth;
         const aspectRatio = originalWidth / originalHeight;
         const desiredHeight = desiredWidth / aspectRatio;
         canvas.width = desiredWidth;
         canvas.height = desiredHeight;
+        scaleX = (desiredWidth / originalWidth);
+        scaleY = (desiredHeight / originalHeight);
+        ctx.setTransform(scaleY, 0, 0, scaleX, 0, 0)
       }
 
   
@@ -66,9 +72,7 @@ var scaleY = 0;
 
   
       // Resize the canvas drawing area to maintain the aspect ratio
-      scaleX = (desiredWidth / originalWidth);
-      scaleY = (desiredHeight / originalHeight);
   
       // Apply the scaling transformation to maintain the aspect ratio
-      ctx.setTransform(scaleY, 0, 0, scaleX, 0, 0)
+
   }
