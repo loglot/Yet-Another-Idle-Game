@@ -39,18 +39,18 @@ var scaleY = 0;
 
     function resizeCanvasForWindowSize() {
 
-      const currentWidth = canvas.width;
-      const currentHeight = canvas.height;
+      var currentWidth = canvas.width;
+      var currentHeight = canvas.height;
 
       // Get the current window dimensions
-      const windowWidth = window.innerWidth;
-      const windowHeight = window.innerHeight;
+      var windowWidth = window.innerWidth;
+      var windowHeight = window.innerHeight;
   
       // Calculate the desired width and height based on the window's dimensions
       
-      const desiredWidth = windowWidth;
-      const aspectRatio = originalWidth / originalHeight;
-      const desiredHeight = desiredWidth / aspectRatio;
+      var desiredWidth = windowWidth;
+      var aspectRatio = originalWidth / originalHeight;
+      var desiredHeight = desiredWidth / aspectRatio;
       canvas.width = desiredWidth;
       canvas.height = desiredHeight;
       scaleX = (desiredWidth / originalWidth);
