@@ -1,13 +1,24 @@
 'use strict';
 
     const canvas = document.getElementById("game_screen");
-      const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d");
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 const originalWidth = canvas.width;
 const originalHeight = canvas.height;
 var scaleX = 0;
 var scaleY = 0;
+
+var keyD = new Image()
+var keyW = new Image()
+var keyA = new Image()
+var keyS = new Image() 
+
+this.keyD.src = 'https://raw.githubusercontent.com/loglot/key-images/10212df9a78eeeb348d6302c3b79ac149670d2e6/Keyboard%20%26%20Mouse/Dark/D_Key_Dark.png';
+this.keyW.src = 'https://raw.githubusercontent.com/loglot/key-images/10212df9a78eeeb348d6302c3b79ac149670d2e6/Keyboard%20%26%20Mouse/Dark/W_Key_Dark.png';
+this.keyA.src = 'https://raw.githubusercontent.com/loglot/key-images/10212df9a78eeeb348d6302c3b79ac149670d2e6/Keyboard%20%26%20Mouse/Dark/A_Key_Dark.png';
+this.keyS.src = 'https://raw.githubusercontent.com/loglot/key-images/10212df9a78eeeb348d6302c3b79ac149670d2e6/Keyboard%20%26%20Mouse/Dark/S_Key_Dark.png';
+
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       window.requestAnimationFrame(gameLoop)
 
