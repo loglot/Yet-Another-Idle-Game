@@ -2,7 +2,6 @@
 
 let draw = {
     Game() {
-        console.log("Frame drawn!")
 
         //clear screen
 
