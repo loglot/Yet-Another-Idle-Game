@@ -1,147 +1,147 @@
 'use strict';
 
-let player = {
+// let player = {
 
-    R : 5,
-    MinR : 10,
-    MaxR : 450,
-    StartingR : 70,
-    X : 838,
-    Y : 459,
+//     R : 5,
+//     MinR : 10,
+//     MaxR : 450,
+//     StartingR : 70,
+//     X : 838,
+//     Y : 459,
 
-    snailSpeedOption : 0,
-    slowSpeedOption : 1,
-    mediumSpeedOption : 2,
-    fastSpeedOption : 3,
-    unstableSpeedOption :4,
+//     snailSpeedOption : 0,
+//     slowSpeedOption : 1,
+//     mediumSpeedOption : 2,
+//     fastSpeedOption : 3,
+//     unstableSpeedOption :4,
     
-    currentSpeedOption : 2,
-    GrowOnCoinOption : false,
+//     currentSpeedOption : 2,
+//     GrowOnCoinOption : false,
 
-    snailSpeed : 1,
-    slowSpeed : 5,
-    mediumSpeed : 10,
-    fastSpeed : 20,
-    unstableSpeed : 500,
+//     snailSpeed : 1,
+//     slowSpeed : 5,
+//     mediumSpeed : 10,
+//     fastSpeed : 20,
+//     unstableSpeed : 500,
 
-    currentSpeed : 10,
+//     currentSpeed : 10,
 
-    async grow(amount) {
-        for(let i = 0; i < amount; i++) {
+//     async grow(amount) {
+//         for(let i = 0; i < amount; i++) {
 
-            player.R++;
-            await misc.sleep(10);
+//             player.R++;
+//             await misc.sleep(10);
 
-            if (player.R > player.MaxR) {
-              player.R = player.MaxR
-            }
+//             if (player.R > player.MaxR) {
+//               player.R = player.MaxR
+//             }
 
-            if (player.X < player.R + 5) {
-              player.X = player.R + 5
-            }
+//             if (player.X < player.R + 5) {
+//               player.X = player.R + 5
+//             }
 
-            if (player.X > -player.R + 1670) {
-              player.X = -player.R + 1670
-            }
+//             if (player.X > -player.R + 1670) {
+//               player.X = -player.R + 1670
+//             }
 
-            if (player.Y < player.R + 8) {
-              player.Y = player.R + 8
-            }
+//             if (player.Y < player.R + 8) {
+//               player.Y = player.R + 8
+//             }
 
-            if (player.Y > -player.R + 910) {
-              player.Y = -player.R + 910
-            }
+//             if (player.Y > -player.R + 910) {
+//               player.Y = -player.R + 910
+//             }
 
-        }
+//         }
 
-    },
+//     },
 
-    async move(xChange, yChange) {
-        if (xChange < 0) {
-            var abs_xChange = 0 - xChange
-          } else {
-            var abs_xChange = xChange
-          }
+//     async move(xChange, yChange) {
+//         if (xChange < 0) {
+//             var abs_xChange = 0 - xChange
+//           } else {
+//             var abs_xChange = xChange
+//           }
   
-          if (yChange < 0) {
-            var abs_yChange = 0 - yChange
-          } else {
-            var abs_yChange = yChange
-          }
+//           if (yChange < 0) {
+//             var abs_yChange = 0 - yChange
+//           } else {
+//             var abs_yChange = yChange
+//           }
   
-          for (let i = 0; i < abs_xChange; i++) {
-            if (xChange < 0) {
-              player.X--;
+//           for (let i = 0; i < abs_xChange; i++) {
+//             if (xChange < 0) {
+//               player.X--;
   
-              if (player.X < player.R + 25) {
-                player.X = player.R + 25
-              }
+//               if (player.X < player.R + 25) {
+//                 player.X = player.R + 25
+//               }
 
-              await misc.sleep(10);
+//               await misc.sleep(10);
   
-            } else {
-              player.X++;
+//             } else {
+//               player.X++;
   
-              if (player.X > -player.R + 1650) {
-                player.X = -player.R + 1650
-              }
+//               if (player.X > -player.R + 1650) {
+//                 player.X = -player.R + 1650
+//               }
 
-              await misc.sleep(10);
-            };
+//               await misc.sleep(10);
+//             };
   
-          }
+//           }
   
-            for (let i = 0; i < abs_yChange; i++) {
-              if (yChange < 0) {
-                player.Y--;
+//             for (let i = 0; i < abs_yChange; i++) {
+//               if (yChange < 0) {
+//                 player.Y--;
   
-                if (player.Y < player.R + 28) {
-                  player.Y = player.R + 28
-                }
+//                 if (player.Y < player.R + 28) {
+//                   player.Y = player.R + 28
+//                 }
 
-                await misc.sleep(10);
-              } else {
-                player.Y++;
+//                 await misc.sleep(10);
+//               } else {
+//                 player.Y++;
   
-                if (player.Y > -player.R + 890) {
-                  player.Y = -player.R + 890
-                }
+//                 if (player.Y > -player.R + 890) {
+//                   player.Y = -player.R + 890
+//                 }
 
-                await misc.sleep(10);
-              }
-        }
-    },
+//                 await misc.sleep(10);
+//               }
+//         }
+//     },
 
-    cycleSpeedOption() {
-        player.currentSpeedOption++;
+//     cycleSpeedOption() {
+//         player.currentSpeedOption++;
 
-        if (player.currentSpeedOption == player.unstableSpeedOption+1) {
-          player.currentSpeedOption = player.snailSpeedOption;
-        }
+//         if (player.currentSpeedOption == player.unstableSpeedOption+1) {
+//           player.currentSpeedOption = player.snailSpeedOption;
+//         }
 
-        this.changeSpeedBasedOnOption();
-    },
+//         this.changeSpeedBasedOnOption();
+//     },
 
-    changeSpeedBasedOnOption() {
-      switch (this.currentSpeedOption) {
-        case this.snailSpeedOption:
-          this.currentSpeed = this.snailSpeed;
-        break;
-        case this.slowSpeedOption:
-          this.currentSpeed = this.slowSpeed;
-          break;
-        case this.mediumSpeedOption:
-          this.currentSpeed = this.mediumSpeed;
-          break
-        case this.fastSpeedOption:
-          this.currentSpeed = this.fastSpeed;
-          break;
-        case this.unstableSpeedOption:
-          this.currentSpeed = this.unstableSpeed;
-          break;
-      }
-    }
-}
+//     changeSpeedBasedOnOption() {
+//       switch (this.currentSpeedOption) {
+//         case this.snailSpeedOption:
+//           this.currentSpeed = this.snailSpeed;
+//         break;
+//         case this.slowSpeedOption:
+//           this.currentSpeed = this.slowSpeed;
+//           break;
+//         case this.mediumSpeedOption:
+//           this.currentSpeed = this.mediumSpeed;
+//           break
+//         case this.fastSpeedOption:
+//           this.currentSpeed = this.fastSpeed;
+//           break;
+//         case this.unstableSpeedOption:
+//           this.currentSpeed = this.unstableSpeed;
+//           break;
+//       }
+//     }
+// }
 
 let misc = {
 

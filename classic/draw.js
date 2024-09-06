@@ -20,8 +20,8 @@ let draw = {
           }  else if (player.currentSpeedOption == player.unstableSpeedOption) {
             var speed_option_eng = "unstable"
           }
-          this.DrawStroked("yet another collectathon", 250, 200)
-          this.DrawStroked("press space to start", 260, 350)
+          this.DrawStroked("Yet Another Collectathon", 250, 200)
+          this.DrawStroked("Press W To Start", 260, 350)
           this.DrawStroked(`growth on coin: ${player.GrowOnCoinOption ? "yes" : "no"} (press 1 to flip)`, 260, 500)
           this.DrawStroked(`speed : ${speed_option_eng} (press 2 to flip)`, 260, 600)
           Keys.drawKeys() 
