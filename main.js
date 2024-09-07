@@ -5,18 +5,18 @@ import { Game } from "./lib/imports.js";
 var game = new Game()
 
 
-var scaleX = 0;
-var scaleY = 0;
 
 
     function gameLoop() {
-      // keyManager.doActionsFromKeyInput();
-      // keyManager.onTick();
-      // resizeCanvasForWindowSize()
+      game.keyMan.update()
       game.display.Game()
+      game.player.update()
+      if(game.keyMan.wasKeyJustPressed("KeyW") && game.MainMenu){
+        game.MainMenu = false
+        game.player.grow(70)
+      }
       requestAnimationFrame(gameLoop)
     }
-    
     requestAnimationFrame(gameLoop)
 
     
