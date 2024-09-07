@@ -21,9 +21,14 @@ var game = new Game()
       }else if(game.keyMan.wasKeyJustPressed("KeyS") && game.MainMenu && game.MenuState == "settings"){
         game.MenuState = "main"
       }else if(game.keyMan.wasKeyJustPressed("ArrowUp") && game.MainMenu && game.MenuState == "settings"){
-        game.SettingSelect -= 1
+        if(game.SettingSelect > 0){
+          game.SettingSelect -= 1
+        }
       }else if(game.keyMan.wasKeyJustPressed("ArrowDown") && game.MainMenu && game.MenuState == "settings"){
-        game.SettingSelect += 1
+        
+        if(game.SettingSelect < 2){
+          game.SettingSelect += 1
+        }
       }else if(game.keyMan.wasKeyJustPressed("ArrowLeft") && game.MainMenu && game.MenuState == "settings"){
         if(game.SettingSelect == 0){
           game.Style = !game.Style
