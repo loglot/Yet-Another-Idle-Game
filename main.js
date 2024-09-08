@@ -16,7 +16,9 @@ var game = new Game()
       if(game.keyMan.wasKeyJustPressed("KeyW") && game.MainMenu && game.MenuState == "main"){
         game.MainMenu = false
         game.soundMenu.volume = .15
-        game.soundMenu.play()
+        if(game.Audios){
+          game.soundMenu.play()
+        }
         game.player.grow(70)
       }else if(game.keyMan.wasKeyJustPressed("KeyS") && game.MainMenu && game.MenuState == "main"){
         game.MenuState = "settings"
@@ -59,6 +61,9 @@ var game = new Game()
             if(game.SpeedSelect > 4){
               game.SpeedSelect = 0
             }
+          }
+          if(game.SettingSelect == 3){
+            game.Audios = !game.Audios
           }
         
       }
