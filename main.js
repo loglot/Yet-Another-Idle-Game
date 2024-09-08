@@ -15,6 +15,8 @@ var game = new Game()
       }
       if(game.keyMan.wasKeyJustPressed("KeyW") && game.MainMenu && game.MenuState == "main"){
         game.MainMenu = false
+        game.soundMenu.volume = .15
+        game.soundMenu.play()
         game.player.grow(70)
       }else if(game.keyMan.wasKeyJustPressed("KeyS") && game.MainMenu && game.MenuState == "main"){
         game.MenuState = "settings"
@@ -26,7 +28,7 @@ var game = new Game()
         }
       }else if(game.keyMan.wasKeyJustPressed("ArrowDown") && game.MainMenu && game.MenuState == "settings"){
         
-        if(game.SettingSelect < 2){
+        if(game.SettingSelect < 3){
           game.SettingSelect += 1
         }
       }else if(game.keyMan.wasKeyJustPressed("ArrowLeft") && game.MainMenu && game.MenuState == "settings"){
@@ -41,6 +43,9 @@ var game = new Game()
           if(game.SpeedSelect < 0){
             game.SpeedSelect = 4
           }
+        }
+        if(game.SettingSelect == 3){
+          game.Audios = !game.Audios
         }
       }else if(game.keyMan.wasKeyJustPressed("ArrowRight") && game.MainMenu && game.MenuState == "settings"){
           if(game.SettingSelect == 0){
