@@ -1,9 +1,4 @@
-# Yet Another Collectathon
+# Yet Another Idle Game
 
 ## features
-moving,
-collecting coins
-
-it's simple, but it works
-
-play online [here](https://loglot.github.io/Yet-Another-Collectathon/)
+YaC clone for now
