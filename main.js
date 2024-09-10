@@ -10,40 +10,26 @@ var game = new Game()
     function gameLoop() {
       game.keyMan.update()
       game.display.Game()
-      if(!game.MainMenu){
+      //game.menu.tick()
+      if(game.State == "game"){
         game.player.update()
       }
-      if(game.keyMan.wasKeyJustPressed("KeyW") && game.MainMenu && game.MenuState == "main"){
-        game.MainMenu = false
+      if(game.keyMan.wasKeyJustPressed("KeyW") && game.State == "main"){
+        game.State = "game"
         game.soundMenu.volume = .15
         if(game.Audios){
           game.soundMenu.play()
         }
         game.player.grow(70)
-      }else if(game.keyMan.wasKeyJustPressed("KeyS") && game.MainMenu && game.MenuState == "main"){
-        game.MenuState = "settings"
-      }else if(game.keyMan.wasKeyJustPressed("KeyS") && game.MainMenu && game.MenuState == "settings"){
-        //game.MenuState = "main"
-      }else if(game.keyMan.wasKeyJustPressed("ArrowUp") && game.MainMenu && game.MenuState == "settings"){
-        if(game.SettingSelect > 0){
-          game.SettingSelect -= 1
-        }
-      }else if(game.keyMan.wasKeyJustPressed("ArrowDown") && game.MainMenu && game.MenuState == "settings"){
-        
-        if(game.SettingSelect < 0){
-          game.SettingSelect += 1
-        }
-      }else if(game.keyMan.wasKeyJustPressed("ArrowLeft") && game.MainMenu && game.MenuState == "settings"){
-        if(game.SettingSelect == 0){
-          game.Audios = !game.Audios
-        }
-      }else if(game.keyMan.wasKeyJustPressed("ArrowRight") && game.MainMenu && game.MenuState == "settings"){
-          if(game.SettingSelect == 0){
-            game.Audios = !game.Audios
-          }
-        
+      //}else if(game.keyMan.wasKeyJustPressed("KeyS") && game.State == "main"){
+        //game.State = "settings"
+      //}else if(game.keyMan.wasKeyJustPressed("KeyS") && game.State == "settings"){
+        //game.State = "main"
+      }else if(game.keyMan.wasKeyJustPressed("KeyE") && game.State == "game"){
+        game.State = "shop"
+      }else if(game.keyMan.wasKeyJustPressed("KeyE") && game.State == "shop"){
+        game.State = "game"
       }
-      console.log(game.MenuState)
       requestAnimationFrame(gameLoop)
     }
     requestAnimationFrame(gameLoop)
