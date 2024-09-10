@@ -23,46 +23,22 @@ var game = new Game()
       }else if(game.keyMan.wasKeyJustPressed("KeyS") && game.MainMenu && game.MenuState == "main"){
         game.MenuState = "settings"
       }else if(game.keyMan.wasKeyJustPressed("KeyS") && game.MainMenu && game.MenuState == "settings"){
-        game.MenuState = "main"
+        //game.MenuState = "main"
       }else if(game.keyMan.wasKeyJustPressed("ArrowUp") && game.MainMenu && game.MenuState == "settings"){
         if(game.SettingSelect > 0){
           game.SettingSelect -= 1
         }
       }else if(game.keyMan.wasKeyJustPressed("ArrowDown") && game.MainMenu && game.MenuState == "settings"){
         
-        if(game.SettingSelect < 3){
+        if(game.SettingSelect < 0){
           game.SettingSelect += 1
         }
       }else if(game.keyMan.wasKeyJustPressed("ArrowLeft") && game.MainMenu && game.MenuState == "settings"){
         if(game.SettingSelect == 0){
-          game.Style = !game.Style
-        }
-        if(game.SettingSelect == 1){
-          game.Grow = !game.Grow
-        }
-        if(game.SettingSelect == 2){
-          game.SpeedSelect--
-          if(game.SpeedSelect < 0){
-            game.SpeedSelect = 4
-          }
-        }
-        if(game.SettingSelect == 3){
           game.Audios = !game.Audios
         }
       }else if(game.keyMan.wasKeyJustPressed("ArrowRight") && game.MainMenu && game.MenuState == "settings"){
           if(game.SettingSelect == 0){
-            game.Style = !game.Style
-          }
-          if(game.SettingSelect == 1){
-            game.Grow = !game.Grow
-          }
-          if(game.SettingSelect == 2){
-            game.SpeedSelect++
-            if(game.SpeedSelect > 4){
-              game.SpeedSelect = 0
-            }
-          }
-          if(game.SettingSelect == 3){
             game.Audios = !game.Audios
           }
         
