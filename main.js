@@ -10,7 +10,7 @@ var game = new Game()
     function gameLoop() {
       game.keyMan.update()
       game.display.Game()
-      //game.menu.tick()
+      game.menu.tick()
       if(game.State == "game"){
         game.player.update()
       }
