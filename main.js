@@ -17,6 +17,7 @@ var game = new Game()
       if(game.keyMan.wasKeyJustPressed("KeyW") && game.State == "main"){
         game.State = "game"
         game.soundMenu.volume = .15
+        game.Start()
         if(game.Audios){
           game.soundMenu.play()
         }
