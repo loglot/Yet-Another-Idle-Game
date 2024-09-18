@@ -30,6 +30,7 @@ var game = new Game()
         game.State = "shop"
       }else if(game.keyMan.wasKeyJustPressed("KeyE") && game.State == "shop"){
         game.State = "game"
+            game.display.leave = true
       }
       requestAnimationFrame(gameLoop)
     }
