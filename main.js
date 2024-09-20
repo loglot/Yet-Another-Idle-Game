@@ -4,12 +4,6 @@ import { Game } from "./lib/imports.js";
 
 var game = new Game()
 
-// const perfectFrameTime = 1000 / 60;
-// var fps = 0
-// let deltaTime = 0;
-// let lastTimestamp = 0;
-// let lastFrameMenu = true
-
 let msPrev = window.performance.now()
 const targetFPS = 60
 const msPerFrame = 1000 / targetFPS
